@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ComputerApp
 {
-    public partial class Form1 : Form
+    public partial class frmSplashScreen : Form
     {
-        public Form1()
+        public frmSplashScreen()
         {
             InitializeComponent();
         }
