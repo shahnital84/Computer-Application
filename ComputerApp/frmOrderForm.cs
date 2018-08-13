@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComputerApp
@@ -13,34 +6,21 @@ namespace ComputerApp
     public partial class frmOrderForm : Form
     {
         public Form pform;
-
-        //public static void closeAll()
-        //{
-        //    FormCollection fc = Application.OpenForms;
-        //    if (fc.Count > 1)
-        //    {
-        //        for (int i = (fc.Count); i > 1; i--)
-        //        {
-        //            Form selectedForm = Application.OpenForms[i - 1];
-        //            selectedForm.Close();
-        //        }
-        //    }
-        //}
-
         public frmOrderForm()
         {
             InitializeComponent();
         }
 
-       //PAGE LOAD - DATA DISPLAYS IN TEXT BOX OF CURRENT SELECTED RECORDD FROM GRID
+        //PAGE LOAD - DATA DISPLAYS IN TEXT BOX OF CURRENT SELECTED RECORDD FROM GRID
         private void frmOrderForm_Load(object sender, EventArgs e)
         {
             refreshData();
         }
 
+        //REFRESH PAGE LOAD
         public void refreshData()
         {
-            txtCondition.Text = StaticVar.condition;
+            txtCondition.Text = StaticVar.condition; //ASSIGN CURRENT SELECTED VALUES TO TEXT BOX TO DISPLAY
             txtManufacturer.Text = StaticVar.manufacturer;
             txtPlatform.Text = StaticVar.platform;
             txtModel.Text = StaticVar.model;
@@ -59,7 +39,7 @@ namespace ComputerApp
             price = double.Parse(StaticVar.cost.Substring(1));
             tax = price * 0.13;
             total = price + tax;
-            txtPrice.Text = price.ToString("C");
+            txtPrice.Text = price.ToString("C"); //CURRENCY FORMAYT
             txtTax.Text = tax.ToString("C");
             txtTotal.Text = total.ToString("C");
         }
@@ -67,35 +47,13 @@ namespace ComputerApp
         //BACK BUTTON - PRODUCT INFO PAGE DISPLAYS
         private void btnBack_Click(object sender, EventArgs e)
         {
-            //if (newForm == null)
-            //{
-            //    frmProductInfo fpi = new frmProductInfo();
-
-            //    fpi.preForm = this;
-            //    fpi.Show();
-            //    this.newForm = fpi;
-            //}
-            //else
-            //{
-            //    this.newForm.Show();
-            //}
-            //this.Hide();
-
-            //Form fc = Application.OpenForms["frmProductInfo"];
-            //if (fc != null)
-            //    fc.Close();
-
-            //fc.Show();
-            this.pform.Show();
-            this.Hide();
+            this.pform.Show(); //PREVIOUS FORM - PRODUCT INFO WILL LOAD
+            this.Hide(); //ORDER FORM HIDE
         }
 
         //CANCEL - APPLICATION TEMINATES
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            //Application.Exit();
-            //StaticVar.closeAll();
-            //closeAll();
             this.Close();
         }
 
@@ -104,14 +62,13 @@ namespace ComputerApp
         {
             if (DialogResult.OK == MessageBox.Show("Thanks for your order.Your order will be processed in 7-10 business days.", "Order Information", MessageBoxButtons.OK))
             {
-                this.Close();
+                this.Close(); //CLOSE APPLICATION
             }
-            //Application.Exit();
         }
 
         private void frmOrderForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.pform.Close();
+            this.pform.Close(); //ON FORM CLOASE AL LPREVIOUS FORM WILL CLOSE 
         }
     }
 }

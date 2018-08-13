@@ -1,24 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Configuration;
-using System.Data.SqlClient;
-
-
 
 namespace ComputerApp
 {
     public partial class frmSelectForm : Form
     {
 
-        public Form previousForm;
-        public Form nextForm;
+        public Form previousForm; //DECLARE previousForm VARIABLE OF FORM TYPE TO SET PREVIOUS FORM
+        public Form nextForm; //DECLARE nextform VARIABLE OF FORM TYPE TO SET NEXT FORM
 
         public frmSelectForm()
         {
@@ -28,43 +17,41 @@ namespace ComputerApp
         //ON FORM LOAD BIND DATA TO GRID
         private void frmSelectForm_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = StaticVar.GetProductDetail();  
+            dataGridView1.DataSource = StaticVar.GetProductDetail();  //DATA BINDING - FUNTION CALL FROM CLASS FILE
         }
 
+        //PUBLIC FUNCTION TO REFRESH FORM TO LOAD SELECTED DATA FROM GRID
         public void refershData()
         {
-            if (StaticVar.pid != null)
+            if (StaticVar.pid != null) // IF RECORD ALREADY SELECTED FROM PRODUCT INFORMATION PAGE , FOR EXAMPLE IF PRODUCT ID = 7
             {
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                foreach (DataGridViewRow row in dataGridView1.Rows) //THEN CHECK ALL ROWS IN GRID 
                 {
-                    if (row.Cells["productID"].Value.ToString().Equals(StaticVar.pid))
+                    if (row.Cells["productID"].Value.ToString().Equals(StaticVar.pid)) // WHEN FINDS PRODUCT ID = 7
                     {
-                        row.Selected = true;
+                        row.Selected = true; //WILL SELECT RECORD OF PRODUCT ID = 7
                     }
                 }
             }
         }
 
         //NEXT BUTTON - PRODUCT INFORATION PAGE DISPLAY WITH SELECTED RECORD ON GRID
-        private void btnNext_Click(object sender, EventArgs e)
+        private void btnNext_Click(object sender, EventArgs e) 
         {
-            if(nextForm == null)
+            if(nextForm == null) //IF USER CLICKS FRIST TIME ON NEXT BUTTON -
             {
-                //frmProductInfo fpi = new frmProductInfo();
-                //fpi.Show();
-                frmProductInfo fpi = new frmProductInfo();
-                fpi.ProdPrevForm = this;
-                this.nextForm = fpi;
-                fpi.Show();
-                // previousForm.Show();
+                frmProductInfo fpi = new frmProductInfo(); //IF YES, CREATE NEW INSTANCE OF FORM PRODUCT INFO
+                fpi.ProdPrevForm = this; //SET PREVIOUS FORM_PRODUCT INFO = SELECT FORM
+                this.nextForm = fpi; //SET NEXT FOEM_SELECT FORM = PRODUCT INFO FORM 
+                fpi.Show(); //PRODUCT INFO FORM SHOW
             }
             else
             {
-                this.nextForm.Show();
+                this.nextForm.Show(); //IF PRODUCT FORM ALREADY OPEN IN MEMORY, PRODUCT FORM WILL SHOW
                 try
                 {
-                    frmProductInfo fpi = this.nextForm as frmProductInfo;
-                    fpi.refreshData();
+                    frmProductInfo fpi = this.nextForm as frmProductInfo; //SET NEXT FOEM_SELECT FORM = PRODUCT INFO FORM 
+                    fpi.refreshData(); //FUNCTION CALL TO REFRESH FORM TO LOAD CURRENT SELECTED DATA ON PRODUCT INFO PAGE
                 }
                 catch(Exception ex)
                 {
@@ -84,7 +71,7 @@ namespace ComputerApp
         //WHEN SELECTION CHANGED TO GRID, CURRENT SELECTED RECORD DATA WILL BE SAVED TO STATIC PUBLIC VARIABLES DECLARED IN STTATIC CLASS FILE
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count==0)
+            if (dataGridView1.SelectedRows.Count==0) 
             {
                 return;
             }
@@ -92,7 +79,7 @@ namespace ComputerApp
             StaticVar.condition = dataGridView1.CurrentRow.Cells["condition"].Value.ToString();
             double cost;
             cost = double.Parse(dataGridView1.CurrentRow.Cells["cost"].Value.ToString());
-            StaticVar.cost = cost.ToString("C");
+            StaticVar.cost = cost.ToString("C"); //COST CURRENCY FORMAT
             StaticVar.platform = dataGridView1.CurrentRow.Cells["platform"].Value.ToString();
             StaticVar.manufacturer = dataGridView1.CurrentRow.Cells["manufacturer"].Value.ToString();
             StaticVar.os = dataGridView1.CurrentRow.Cells["OS"].Value.ToString();

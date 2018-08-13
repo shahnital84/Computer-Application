@@ -153,7 +153,7 @@
             this.TechSpecsGroupBox.TabIndex = 19;
             this.TechSpecsGroupBox.TabStop = false;
             this.TechSpecsGroupBox.Text = "Tech Specs";
-            this.TechSpecsGroupBox.Enter += new System.EventHandler(this.TechSpecsGroupBox_Enter);
+         
             // 
             // WebCamTextBox
             // 

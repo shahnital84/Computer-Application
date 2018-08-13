@@ -15,7 +15,7 @@ namespace ComputerApp
     {
         public static string pid, condition, cost, platform, manufacturer, os, model, memory, cbrand, ctype, lsize, cno, cspeed, hdd, gputype, webcam, filedata;
 
-        public static DataTable GetProductDetail()
+        public static DataTable GetProductDetail() // public funstion to access data from database 
         {
             DataTable dt = new DataTable();
             string constr = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
@@ -29,54 +29,6 @@ namespace ComputerApp
             dt.Load(dr);
             con1.Close();
             return dt;
-        }
-
-        //public static void OpenMenu()
-        //{
-        //    OpenFileDialog openDig = new OpenFileDialog();
-        //    openDig.Filter = "Text Files|*.txt";
-        //    if (openDig.ShowDialog() == DialogResult.OK)
-        //    {
-        //        filedata = System.IO.File.ReadAllText(openDig.FileName);
-        //        Console.WriteLine(filedata);
-        //        string[] data = filedata.Split('|');
-        //        foreach (string i in data)
-        //        {
-        //            string getdata = i;
-        //        }
-        //        pid = data[0];
-        //        condition = data[1];
-        //        cost = data[2];
-        //        platform = data[3];
-        //        manufacturer = data[4];
-        //        os = data[5];
-        //        model = data[6];
-        //        memory = data[7];
-        //        cbrand = data[8];
-        //        ctype = data[9];
-        //        lsize = data[10];
-        //        cno = data[11];
-        //        cspeed = data[12];
-        //        hdd = data[13];
-        //        gputype = data[14];
-        //        webcam = data[15];
-        //    }
-
-
-        //}
-
-        //public static void closeAll()
-        //{
-        //    FormCollection fc = System.Windows.Forms.Application.OpenForms;
-        //    if (fc.Count > 1)
-        //    {
-        //        for (int i = (fc.Count); i > 1; i--)
-        //        {
-        //            Form selectedForm = System.Windows.Forms.Application.OpenForms[i - 1];
-        //            selectedForm.Close();
-        //        }
-        //    }
-        //}
-
+        }       
     }
 }
