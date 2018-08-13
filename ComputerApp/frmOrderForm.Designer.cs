@@ -487,6 +487,7 @@
             this.btnBack.TabIndex = 3;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnFinish
             // 
@@ -497,6 +498,7 @@
             this.btnFinish.TabIndex = 4;
             this.btnFinish.Text = "Finish";
             this.btnFinish.UseVisualStyleBackColor = true;
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // btnCancel
             // 
@@ -507,6 +509,7 @@
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmOrderForm
             // 
@@ -521,6 +524,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmOrderForm";
             this.Text = "frmOrderForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOrderForm_FormClosing);
             this.Load += new System.EventHandler(this.frmOrderForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

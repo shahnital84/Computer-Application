@@ -99,6 +99,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmStartUp";
             this.Text = "frmStartUp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmStartUp_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -87,7 +87,7 @@
             this.NextButton.Location = new System.Drawing.Point(644, 365);
             this.NextButton.Name = "NextButton";
             this.NextButton.Size = new System.Drawing.Size(114, 32);
-            this.NextButton.TabIndex = 21;
+            this.NextButton.TabIndex = 1;
             this.NextButton.Text = "Next";
             this.NextButton.UseVisualStyleBackColor = true;
             this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
@@ -102,6 +102,7 @@
             this.SelectAnotherProductButton.TabIndex = 22;
             this.SelectAnotherProductButton.Text = "Select Another Product";
             this.SelectAnotherProductButton.UseVisualStyleBackColor = true;
+            this.SelectAnotherProductButton.Click += new System.EventHandler(this.SelectAnotherProductButton_Click);
             // 
             // CancelButton
             // 
@@ -113,6 +114,7 @@
             this.CancelButton.TabIndex = 23;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // ClickNexttoConfirmYourSelectionLabel
             // 
@@ -151,6 +153,7 @@
             this.TechSpecsGroupBox.TabIndex = 19;
             this.TechSpecsGroupBox.TabStop = false;
             this.TechSpecsGroupBox.Text = "Tech Specs";
+            this.TechSpecsGroupBox.Enter += new System.EventHandler(this.TechSpecsGroupBox_Enter);
             // 
             // WebCamTextBox
             // 
@@ -351,7 +354,6 @@
             this.ModelTextBox.ReadOnly = true;
             this.ModelTextBox.Size = new System.Drawing.Size(345, 29);
             this.ModelTextBox.TabIndex = 6;
-            this.ModelTextBox.TextChanged += new System.EventHandler(this.ModelTextBox_TextChanged);
             // 
             // ManufacturerTextBox
             // 
@@ -523,21 +525,22 @@
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -575,6 +578,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmProductInfo";
             this.Text = "frmProductInfo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmProductInfo_FormClosing);
             this.Load += new System.EventHandler(this.frmProductInfo_Load);
             this.TechSpecsGroupBox.ResumeLayout(false);
             this.TechSpecsGroupBox.PerformLayout();
@@ -594,18 +598,9 @@
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Label ClickNexttoConfirmYourSelectionLabel;
         private System.Windows.Forms.GroupBox TechSpecsGroupBox;
-        private System.Windows.Forms.TextBox WebCamTextBox;
-        private System.Windows.Forms.TextBox CPUSpeedTextBox;
-        private System.Windows.Forms.TextBox CPUTypeTextBox;
-        private System.Windows.Forms.TextBox GPUTypeTextBox;
-        private System.Windows.Forms.TextBox CPUNumberTextBox;
-        private System.Windows.Forms.TextBox CPUBrandTextBox;
-        private System.Windows.Forms.TextBox HDDTextBox;
         private System.Windows.Forms.Label WebCamLabel;
-        private System.Windows.Forms.TextBox LCDSizeTextBox;
         private System.Windows.Forms.Label CPUSpeedLabel;
         private System.Windows.Forms.Label GPUTypeLabel;
-        private System.Windows.Forms.TextBox MemoryTextBox;
         private System.Windows.Forms.Label CPUNumberLabel;
         private System.Windows.Forms.Label HDDLabel;
         private System.Windows.Forms.Label CPUTypeLabel;
@@ -613,21 +608,14 @@
         private System.Windows.Forms.Label CPUBrandLabel;
         private System.Windows.Forms.Label MemoryLabel;
         private System.Windows.Forms.GroupBox ProductInfoGroupBox;
-        private System.Windows.Forms.TextBox ModelTextBox;
-        private System.Windows.Forms.TextBox ManufacturerTextBox;
-        private System.Windows.Forms.TextBox OSTextBox;
         private System.Windows.Forms.Label ModelLabel;
-        private System.Windows.Forms.TextBox PlatformTextBox;
         private System.Windows.Forms.Label OSLabel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label ManufacturerLabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label PlatformLabel;
-        private System.Windows.Forms.TextBox CostTextBox;
         private System.Windows.Forms.Label CostLabel;
-        private System.Windows.Forms.TextBox ConditionTextBox;
         private System.Windows.Forms.Label ConditionLabel;
-        private System.Windows.Forms.TextBox ProductIdTextBox;
         private System.Windows.Forms.Label ProductIDLabel;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -636,5 +624,21 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backToolStripMenuItem;
+        public System.Windows.Forms.TextBox WebCamTextBox;
+        public System.Windows.Forms.TextBox CPUSpeedTextBox;
+        public System.Windows.Forms.TextBox CPUTypeTextBox;
+        public System.Windows.Forms.TextBox GPUTypeTextBox;
+        public System.Windows.Forms.TextBox CPUNumberTextBox;
+        public System.Windows.Forms.TextBox CPUBrandTextBox;
+        public System.Windows.Forms.TextBox HDDTextBox;
+        public System.Windows.Forms.TextBox LCDSizeTextBox;
+        public System.Windows.Forms.TextBox MemoryTextBox;
+        public System.Windows.Forms.TextBox ModelTextBox;
+        public System.Windows.Forms.TextBox ManufacturerTextBox;
+        public System.Windows.Forms.TextBox OSTextBox;
+        public System.Windows.Forms.TextBox PlatformTextBox;
+        public System.Windows.Forms.TextBox CostTextBox;
+        public System.Windows.Forms.TextBox ConditionTextBox;
+        public System.Windows.Forms.TextBox ProductIdTextBox;
     }
 }
